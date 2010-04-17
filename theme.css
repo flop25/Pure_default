@@ -14,6 +14,10 @@ margin-right:0;
 .stuffs_block {
 margin-bottom:5px!important;
 }
+#theImage P {
+	margin-left:10%;
+	margin-right:10%;
+}
 
 /*--------menu--------------*/
 #table_content, .table_menu, #table_mbLinks, #table_mbCategories, #table_mbTags, #table_mbSpecials, #table_mbMenu, #table_mbIdentification {
