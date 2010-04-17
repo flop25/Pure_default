@@ -1,0 +1,25 @@
+
+/* positionnement */
+#autre_content {
+	padding-bottom: 1em;
+}
+
+#menubar DL, #menubar DT, #the_page, BODY {
+	margin: 0px;
+	padding: 0px;
+}
+#content, .content {
+margin-right:0;
+}
+.stuffs_block {
+margin-bottom:5px!important;
+}
+
+/*--------menu--------------*/
+#table_content, .table_menu, #table_mbLinks, #table_mbCategories, #table_mbTags, #table_mbSpecials, #table_mbMenu, #table_mbIdentification {
+width:100%;
+border:0;
+padding:0;
+margin:0;
+}
+
