@@ -79,47 +79,51 @@
       {/if}
     
       </div> <!-- titrePage -->
-    
-    {if !empty($PLUGIN_INDEX_CONTENT_BEGIN)}{$PLUGIN_INDEX_CONTENT_BEGIN}{/if}
-    
-    {if !empty($category_search_results) }
-    <div style="font-size:16px;margin:10px 16px">{'Category results for'|@translate} <strong>{$QUERY_SEARCH}</strong> :
-      <em><strong>
-      {foreach from=$category_search_results item=res name=res_loop}
-      {if !$smarty.foreach.res_loop.first} &mdash; {/if}
-      {$res}
-      {/foreach}
-      </strong></em>
-    </div>
-    {/if}
-    
-    {if !empty($tag_search_results) }
-    <div style="font-size:16px;margin:10px 16px">{'Tag results for'|@translate} <strong>{$QUERY_SEARCH}</strong> :
-      <em><strong>
-      {foreach from=$tag_search_results item=res name=res_loop}
-      {if !$smarty.foreach.res_loop.first} &mdash; {/if}
-      {$res}
-      {/foreach}
-      </strong></em>
-    </div>
-    {/if}
-    
-    {if isset($FILE_CHRONOLOGY_VIEW) }
-    {include file=$FILE_CHRONOLOGY_VIEW}
-    {/if}
-    
-    {if !empty($CATEGORIES) }{$CATEGORIES}{/if}
-    {if !empty($THUMBNAILS) }{$THUMBNAILS}{/if}
-    
-    {if !empty($navbar) }{include file='navigation_bar.tpl'|@get_extent:'navbar'}{/if}
-    
-    {if !empty($CONTENT_DESCRIPTION) }
-    <div class="additional_info">
-      {$CONTENT_DESCRIPTION}
-    </div>
-    {/if}
-    
-    {if !empty($PLUGIN_INDEX_CONTENT_END) }{$PLUGIN_INDEX_CONTENT_END}{/if}
+
+      {if !empty($PLUGIN_INDEX_CONTENT_BEGIN)}{$PLUGIN_INDEX_CONTENT_BEGIN}{/if}
+      
+      {if !empty($category_search_results)}
+      <div style="font-size:16px;margin:10px 16px">{'Album results for'|@translate} <strong>{$QUERY_SEARCH}</strong> :
+        <em><strong>
+        {foreach from=$category_search_results item=res name=res_loop}
+        {if !$smarty.foreach.res_loop.first} &mdash; {/if}
+        {$res}
+        {/foreach}
+        </strong></em>
+      </div>
+      {/if}
+      
+      {if !empty($tag_search_results)}
+      <div style="font-size:16px;margin:10px 16px">{'Tag results for'|@translate} <strong>{$QUERY_SEARCH}</strong> :
+        <em><strong>
+        {foreach from=$tag_search_results item=res name=res_loop}
+        {if !$smarty.foreach.res_loop.first} &mdash; {/if}
+        {$res}
+        {/foreach}
+        </strong></em>
+      </div>
+      {/if}
+      
+      {if isset($FILE_CHRONOLOGY_VIEW)}
+      {include file=$FILE_CHRONOLOGY_VIEW}
+      {/if}
+      
+      {if !empty($CONTENT_DESCRIPTION)}
+      <div class="additional_info">
+        {$CONTENT_DESCRIPTION}
+      </div>
+      {/if}
+      
+      {if !empty($CATEGORIES)}{$CATEGORIES}{/if}
+      {if !empty($THUMBNAILS)}
+      <ul class="thumbnails" id="thumbnails">
+      {$THUMBNAILS}
+      </ul>
+      {/if}
+      
+      {if !empty($navbar)}{include file='navigation_bar.tpl'|@get_extent:'navbar'}{/if}
+      
+      {if !empty($PLUGIN_INDEX_CONTENT_END)}{$PLUGIN_INDEX_CONTENT_END}{/if}
       </td>
 	  <td id="section_right">&nbsp;</td>
     </tr>
