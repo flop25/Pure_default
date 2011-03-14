@@ -2,24 +2,28 @@
 
 	<div class="titrePage">
 		<ul class="categoryActions">
-		{if $display_mode == 'letters'}
-			<li><a href="{$U_CLOUD}" title="{'cloud'|@translate}" rel="nofollow"><img src="{$themeconf.icon_dir}/tag_cloud.png" class="button" alt="{'cloud'|@translate}"></a></li>
-		{/if}
-
-		{if $display_mode == 'cloud'}
-			<li><a href="{$U_LETTERS}" title="{'letters'|@translate}" rel="nofollow"><img src="{$themeconf.icon_dir}/tag_letters.png" class="button" alt="{'letters'|@translate}"></a></li>
-		{/if}
-
-			<li><a href="{$U_HOME}" title="{'Home'|@translate}"><img src="{$themeconf.icon_dir}/home.png" class="button" alt="{'Home'|@translate}"></a></li>
-		</ul>
-		<h2>{'Tags'|@translate}</h2>
+  {if $display_mode == 'letters'}
+      <li><a href="{$U_CLOUD}" title="{'show tag cloud'|@translate}" class="pwg-state-default pwg-button">
+        <span class="pwg-icon pwg-icon-cloud">&nbsp;</span><span class="pwg-button-text">{'cloud'|@translate}</span>
+      </a></li>
+  {/if}
+  {if $display_mode == 'cloud'}
+      <li><a href="{$U_LETTERS}" title="{'group by letters'|@translate}" class="pwg-state-default pwg-button" rel="nofollow">
+        <span class="pwg-icon pwg-icon-letters">&nbsp;</span><span class="pwg-button-text">{'letters'|@translate}</span>
+      </a></li>
+  {/if}
+      <li><a href="{$U_HOME}" title="{'Home'|@translate}" class="pwg-state-default pwg-button">
+        <span class="pwg-icon pwg-icon-home">&nbsp;</span><span class="pwg-button-text">{'Home'|@translate}</span>
+      </a></li>
+    </ul>
+    <h2>{'Tags'|@translate}</h2>
   </div>
 <div id="autre_content">
 {if isset($tags)}
 	{if $display_mode == 'cloud'}
 	<div id="fullTagCloud">
 		{foreach from=$tags item=tag}
-		<span><a href="{$tag.URL}" class="tagLevel{$tag.level}" title="{$tag.counter}">{$tag.name}</a></span>
+		<span><a href="{$tag.URL}" class="tagLevel{$tag.level}" title="{$pwg->l10n_dec('%d photo', '%d photos', $tag.counter)}">{$tag.name}</a></span>
 		{/foreach}
 	</div>
 	{/if}
