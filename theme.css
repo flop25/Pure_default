@@ -1,3 +1,12 @@
+/* ---------------------------------------------------------------------------
+Theme Pure_default 
+
+child-theme of Pure_default
+
+by flop25 http://www.planete-flop.fr/
+------------------------------------------------------------------------------ */
+
+@import "iconset.css";
 
 /* positionnement */
 #autre_content {

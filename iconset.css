@@ -1,0 +1,51 @@
+.pwg-icon {
+	background-image: url(icon/SPRITE.png);
+}
+A.pwg-button {
+	border:none;
+}
+.pwg-state-disabled .pwg-icon-arrow-e{ background-position: 0 -144px; width: 22px; height: 22px; } 
+.pwg-state-disabled .pwg-icon-arrow-w{ background-position: 0 -360px; width: 22px; height: 22px; } 
+.pwg-state-disabled .pwg-icon-arrowstop-e{ background-position: 0 -504px; width: 22px; height: 22px; } 
+.pwg-state-disabled .pwg-icon-arrowstop-w{ background-position: 0 -648px; width: 22px; height: 22px; } 
+
+.pwg-icon-apropos{ background-position: 0 0; width: 22px; height: 22px; } 
+.pwg-icon-arrow-e{ background-position: 0 -72px; width: 22px; height: 22px; } 
+.pwg-icon-arrow-n{ background-position: 0 -216px; width: 22px; height: 22px; } 
+.pwg-icon-arrow-w{ background-position: 0 -288px; width: 22px; height: 22px; } 
+.pwg-icon-arrowstop-e{ background-position: 0 -432px; width: 22px; height: 22px; } 
+.pwg-icon-arrowstop-w{ background-position: 0 -576px; width: 22px; height: 22px; } 
+
+.pwg-icon-caddie-add{ background-position: 0 -720px; width: 24px; height: 24px; } 
+.pwg-icon-calendar{ background-position: 0 -794px; width: 22px; height: 22px; } 
+.pwg-icon-camera-calendar{ background-position: 0 -866px; width: 24px; height: 24px; } 
+.pwg-icon-camera-info{ background-position: 0 -940px; width: 22px; height: 22px; } 
+.pwg-icon-category-edit{ background-position: 0 -1012px; width: 22px; height: 22px; } 
+.pwg-icon-category-view-flat{ background-position: 0 -1084px; width: 22px; height: 22px; } 
+.pwg-icon-category-view-normal{ background-position: 0 -1156px; width: 22px; height: 22px; } 
+.pwg-icon-chat{ background-position: 0 -1228px; width: 22px; height: 22px; } 
+.pwg-icon-clock-minus{ background-position: 0 -1300px; width: 22px; height: 22px; } 
+.pwg-icon-clock-plus{ background-position: 0 -1372px; width: 22px; height: 22px; } 
+.pwg-icon-close{ background-position: 0 -1444px; width: 24px; height: 24px; } 
+.pwg-icon-cloud{ background-position: 0 -1518px; width: 22px; height: 22px; } 
+.pwg-icon-edit{ background-position: 0 -1590px; width: 22px; height: 22px; } 
+.pwg-icon-favorite-add{ background-position: 0 -1662px; width: 22px; height: 22px; } 
+.pwg-icon-favorite-del{ background-position: 0 -1734px; width: 22px; height: 22px; } 
+.pwg-icon-help{ background-position: 0 -1806px; width: 22px; height: 22px; } 
+.pwg-icon-home{ background-position: 0 -1878px; width: 22px; height: 22px; } 
+.pwg-icon-letters{ background-position: -74px 0; width: 22px; height: 22px; } 
+.pwg-icon-lost-password{ background-position: -74px -72px; width: 24px; height: 24px; } 
+.pwg-icon-pause{ background-position: -74px -146px; width: 22px; height: 22px; } 
+.pwg-icon-play{ background-position: -74px -218px; width: 22px; height: 22px; } 
+.pwg-icon-register{ background-position: -74px -290px; width: 24px; height: 24px; } 
+.pwg-icon-repeat-play{ background-position: -74px -364px; width: 22px; height: 22px; } 
+.pwg-icon-repeat-stop{ background-position: -74px -436px; width: 22px; height: 22px; } 
+.pwg-icon-representative{ background-position: -74px -508px; width: 22px; height: 22px; } 
+.pwg-icon-rss{ background-position: -74px -580px; width: 22px; height: 22px; } 
+.pwg-icon-save{ background-position: -74px -652px; width: 24px; height: 24px; } 
+.pwg-icon-search{ background-position: -74px -726px; width: 22px; height: 22px; } 
+.pwg-icon-slideshow{ background-position: -74px -798px; width: 22px; height: 22px; } 
+.pwg-icon-small_resizable{ background-position: -74px -870px; width: 16px; height: 16px; } 
+.pwg-icon-stop{ background-position: -74px -936px; width: 22px; height: 22px; } 
+.pwg-icon-tag{ background-position: -74px -1008px; width: 22px; height: 22px; } 
+.pwg-icon-upload{ background-position: -74px -1080px; width: 22px; height: 22px; } 
