@@ -43,6 +43,10 @@ function Pure_default_after_page_header()
 	{
 		$template->set_prefilter('about', 'Pure_default_prefilter_about');
 	}
+	if (isset($page['body_id']) and $page['body_id'] == 'thePopuphelpPage')
+	{
+		$template->set_prefilter('popuphelp', 'Pure_default_prefilter_popuphelp');
+	}
 }
 /** index.tpl **/
 add_event_handler('loc_end_index', 'Pure_default_index');
@@ -212,4 +216,18 @@ function Pure_default_prefilter_about($content, &$smarty)
   </div>';
 		return preg_replace($search, $replacement, $content);
 }
+/**************************** popuphelp.tpl *****************************************************************/
+function Pure_default_prefilter_popuphelp($content, &$smarty)
+{
+		$search = '#</h2>[\s]*</div>#';  
+		$replacement = '</h2>
+  </div>
+<div id="autre_content">';
+		$content = preg_replace($search, $replacement, $content);
+		$search = '#</div>[\s]*<!-- content -->#';  
+		$replacement = '</div>
+		</div> <!-- content -->';
+		return preg_replace($search, $replacement, $content);
+}
+
 ?>
