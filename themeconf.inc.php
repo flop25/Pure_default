@@ -15,6 +15,35 @@ $themeconf = array(
   'local_head'    => 'local_head.tpl',
   'activable' => false,
 );
+add_event_handler('loc_after_page_header', 'Pure_default_after_page_header');
+function Pure_default_after_page_header()
+{
+	global $template, $page;
+	if (isset($page['body_id']) and $page['body_id'] == 'theIdentificationPage')
+	{
+    $template->set_prefilter('identification', 'Pure_default_prefilter_identification');
+	}
+	if (isset($page['body_id']) and $page['body_id'] == 'theNBMPage')
+	{
+    $template->set_prefilter('nbm', 'Pure_default_prefilter_nbm');
+	}
+	if (isset($page['body_id']) and $page['body_id'] == 'theNotificationPage')
+	{
+		$template->set_prefilter('notification', 'Pure_default_prefilter_notification');
+	}
+	if (isset($page['body_id']) and $page['body_id'] == 'thePasswordPage')
+	{
+		$template->set_prefilter('password', 'Pure_default_prefilter_password');
+	}
+	if (isset($page['body_id']) and $page['body_id'] == 'theTagsPage')
+	{
+		$template->set_prefilter('tags', 'Pure_default_prefilter_tags');
+	}
+	if (isset($page['body_id']) and $page['body_id'] == 'theAboutPage')
+	{
+		$template->set_prefilter('about', 'Pure_default_prefilter_about');
+	}
+}
 /** index.tpl **/
 add_event_handler('loc_end_index', 'Pure_default_index');
 add_event_handler('loc_end_index', 'Pure_default_index_stuff');
@@ -104,4 +133,83 @@ function Pure_default_prefilter_index_stuff($content, &$smarty)
 	//return 'blabmabhmijokpiuyftdfghijkougyffguio';
 }
 
+/**************************** identification.tpl *****************************************************************/
+function Pure_default_prefilter_identification($content, &$smarty)
+{
+  $search = '#<form action="\{\$F_LOGIN_ACTION\}" method="post" name="login_form" class="properties">#';  
+  $replacement = '<div id="autre_content">
+<form action="{$F_LOGIN_ACTION}" method="post" name="login_form" class="properties">
+';
+  $content = preg_replace($search, $replacement, $content);
+  $search = '#</div>[\s]*<\!-- content -->#';  
+  $replacement = '</div>
+	</div> <!-- content -->';
+  return preg_replace($search, $replacement, $content);
+}
+/**************************** nbm.tpl *****************************************************************/
+function Pure_default_prefilter_nbm($content, &$smarty)
+{
+	$search = '#\{if not empty(\$errors)\}#';  
+	$replacement = '<div id="autre_content">
+{if not empty($errors)}
+';
+	$content = preg_replace($search, $replacement, $content);
+	$search = '#\{/if\}[\s]*</div>#';  
+	$replacement = '{/if}
+	</div>
+	</div> <!-- content -->';
+	return preg_replace($search, $replacement, $content);
+}
+/**************************** notification.tpl *****************************************************************/
+function Pure_default_prefilter_notification($content, &$smarty)
+{
+	$search = '#<p>\{\'#';  
+	$replacement = '<div id="autre_content">
+<p>{\'';
+	$content = preg_replace($search, $replacement, $content);
+	$search = '#</dt>[\s]*</dl>#';  
+	$replacement = '</dt>
+	</dl>
+</div>';
+	return preg_replace($search, $replacement, $content);
+}
+/**************************** password.tpl *****************************************************************/
+function Pure_default_prefilter_password($content, &$smarty)
+{
+	$search = '#<form action=#';  
+	$replacement = '<div id="autre_content">
+<form action=';
+	$content = preg_replace($search, $replacement, $content);
+	$search = '#</div>[\s]*<!-- content -->#';  
+	$replacement = '</div>
+	</div> <!-- content -->';
+	return preg_replace($search, $replacement, $content);
+}
+/**************************** tags.tpl *****************************************************************/
+function Pure_default_prefilter_tags($content, &$smarty)
+{
+		$search = '#</h2>[\s]*</div>#';  
+		$replacement = '</h2>
+  </div>
+<div id="autre_content">';
+		$content = preg_replace($search, $replacement, $content);
+		$search = '#</div>[\s]*<!-- content -->#';  
+		$replacement = '</div>
+		</div> <!-- content -->';
+		return preg_replace($search, $replacement, $content);
+}
+/**************************** about.tpl *****************************************************************/
+function Pure_default_prefilter_about($content, &$smarty)
+{
+		$search = '#</h2>[\s]*</div>#';  
+		$replacement = '</h2>
+  </div>
+<div id="autre_content">';
+		$content = preg_replace($search, $replacement, $content);
+		$search = '#\{/if\}[\s]*</div>#';  
+		$replacement = '{/if}
+  </div>
+  </div>';
+		return preg_replace($search, $replacement, $content);
+}
 ?>
