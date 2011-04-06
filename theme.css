@@ -27,6 +27,15 @@ margin-bottom:5px!important;
 	margin-left:10%;
 	margin-right:10%;
 }
+.thumbnails SPAN, .thumbnails .wrap2 A, .thumbnails LABEL, .thumbnailCategory DIV.illustration {
+    width: auto;
+}
+.description  {
+    padding-left: 10px;
+}
+.illustration IMG {
+	max-height:128px;
+}
 
 /*--------menu--------------*/
 #table_content, .table_menu, #table_mbLinks, #table_mbCategories, #table_mbTags, #table_mbSpecials, #table_mbMenu, #table_mbIdentification {
