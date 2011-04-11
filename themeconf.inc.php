@@ -48,22 +48,12 @@ function Pure_default_after_page_header()
 		$template->set_prefilter('popuphelp', 'Pure_default_prefilter_popuphelp');
 	}
 }
-/** index.tpl **/
+/************************************ index.tpl ************************************/
 add_event_handler('loc_end_index', 'Pure_default_index');
-add_event_handler('loc_end_index', 'Pure_default_index_stuff');
 function Pure_default_index()
 {
     global $template;
     $template->set_prefilter('index', 'Pure_default_prefilter_index');
-    //$template->set_prefilter('stuffs', 'Pure_default_prefilter_index_stuff');
-		//return $tpl_thumbnails_var;
-}
-function Pure_default_index_stuff()
-{
-    global $template;
-    //$template->set_prefilter('index', 'Pure_default_prefilter_index');
-    $template->set_prefilter('stuffs', 'Pure_default_prefilter_index_stuff');
-		//return $tpl_thumbnails_var;
 }
 function Pure_default_prefilter_index($content, &$smarty)
 {
@@ -94,47 +84,6 @@ function Pure_default_prefilter_index($content, &$smarty)
   </table>
 ';
   return preg_replace($search, $replacement, $content);
-}
-function Pure_default_prefilter_index_stuff($content, &$smarty)
-{
-  
-	$search = '#<div class="content stuffs_block">#';  
-  $replacement = '<div class="content stuffs_block">
-  <table id="table_content" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td id="section_up_left">&nbsp;</td>
-      <td id="section_up">&nbsp;</td>
-      <td id="section_up_right">&nbsp;</td>
-    </tr>
-    <tr>
-      <td id="section_left">&nbsp;</td>
-      <td id="section_in">
-';
-  $content = preg_replace($search, $replacement, $content);
-	
-  $search = '#\{if \$block\.end_line\}
-  </div>
-  \{\/if\}
-\{/foreach\}
-</div>#';  
-  $replacement = '{if $block.end_line}
-  </div>
-  {/if}
-{/foreach}
-      </td>
-	  <td id="section_right">&nbsp;</td>
-    </tr>
-    <tr>
-      <td id="section_bottom_left">&nbsp;</td>
-      <td id="section_bottom" >&nbsp;</td>
-      <td id="section_bottom_right" >&nbsp;</td>
-    </tr>
-  </table>
-</div>';
-  return preg_replace($search, $replacement, $content);
-	
-	//echo($content);
-	//return 'blabmabhmijokpiuyftdfghijkougyffguio';
 }
 
 /**************************** identification.tpl *****************************************************************/
