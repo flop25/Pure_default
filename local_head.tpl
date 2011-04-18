@@ -2,7 +2,7 @@
 {literal} 
 var max_dim_width = 0;
 var max_dim_height = 0;
-jQuery(document).ready(function() {
+$(document).ready(function() {
   $(".thumbnails img").each(function () {
     if (jQuery(this).height() > max_dim_height)
       max_dim_height = jQuery(this).height() + 10;
