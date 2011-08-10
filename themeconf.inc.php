@@ -85,6 +85,43 @@ function Pure_default_prefilter_index($content, &$smarty)
 ';
   return preg_replace($search, $replacement, $content);
 }
+/************************************ picture.tpl ************************************/
+add_event_handler('loc_begin_picture', 'Pure_default_picture');
+function Pure_default_picture()
+{
+    global $template;
+    $template->set_prefilter('picture', 'Pure_default_prefilter_picture');
+}
+function Pure_default_prefilter_picture($content, &$smarty)
+{
+  $search = '#<div id="content" class="pictureContent">#';  
+  $replacement = '<div id="content" class="pictureContent">
+  <table id="table_content" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td id="section_up_left">&nbsp;</td>
+      <td id="section_up">&nbsp;</td>
+      <td id="section_up_right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td id="section_left">&nbsp;</td>
+      <td id="section_in">
+';
+  $content = preg_replace($search, $replacement, $content);
+	
+  $search = '#\{if \!empty\(\$PLUGIN_PICTURE_AFTER\)\}\{\$PLUGIN_PICTURE_AFTER\}\{/if\}#';  
+  $replacement = '{if !empty($PLUGIN_PICTURE_AFTER)}{$PLUGIN_PICTURE_AFTER}{/if}
+      </td>
+	  <td id="section_right">&nbsp;</td>
+    </tr>
+    <tr>
+      <td id="section_bottom_left">&nbsp;</td>
+      <td id="section_bottom" >&nbsp;</td>
+      <td id="section_bottom_right" >&nbsp;</td>
+    </tr>
+  </table>
+';
+  return preg_replace($search, $replacement, $content);
+}
 
 /**************************** identification.tpl *****************************************************************/
 function Pure_default_prefilter_identification($content, &$smarty)

@@ -42,3 +42,8 @@ padding:0;
 margin:0;
 }
 
+/*--------image--------------*/
+#imageHeaderBar .browsePath {
+    font-size: 120%;
+    font-weight: bold;
+}

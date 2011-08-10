@@ -16,3 +16,12 @@ $(document).ready(function() {
 });
 {/literal}
 {/footer_script}
+{if isset($MENUBAR) and isset($ELEMENT_CONTENT)}
+{html_head}{literal}
+<style>
+#imageHeaderBar, #imageToolBar {
+	background-image:none;
+}
+</style>
+{/literal}{/html_head}
+{/if}
