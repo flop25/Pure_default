@@ -12,6 +12,8 @@ $(document).ready(function() {
     jQuery(".wrap2")
       .css('width', max_dim_width+'px')
       .css('height', max_dim_height+'px');
+    jQuery(".wrap1")
+      .css('width', max_dim_width+'px');
   });
 });
 {/literal}
