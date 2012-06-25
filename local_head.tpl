@@ -1,3 +1,4 @@
+{if isset($PHPWG_VERSION_01) and $PHPWG_VERSION_01!="24"}
 {footer_script require='jquery'}
 {literal} 
 var max_dim_width = 0;
@@ -18,6 +19,7 @@ jQuery(window).load(function() {
 });
 {/literal}
 {/footer_script}
+{/if}
 {if isset($MENUBAR) and isset($ELEMENT_CONTENT)}
 {html_head}{literal}
 <style>

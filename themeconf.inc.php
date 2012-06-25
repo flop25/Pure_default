@@ -15,6 +15,81 @@ $themeconf = array(
   'local_head'    => 'local_head.tpl',
   'activable' => false,
 );
+
+
+add_event_handler('loc_begin_header', 'pwg_v');
+function  pwg_v() {
+  global $template;
+  $pwgversion=str_replace('.','',PHPWG_VERSION);
+  $pwgversion_array=explode('.', PHPWG_VERSION);
+ $template->assign(
+  array(
+    'PHPWG_VERSION_01' => $pwgversion_array[0].$pwgversion_array[1],
+  ));
+}
+
+
+// function load_pattern
+// include the right ***.pattern.php
+// not compatible 2.2and<2.2
+
+function load_pattern()
+{
+  global $pattern;
+  $pwgversion=str_replace('.','',PHPWG_VERSION);
+  $pwgversion_array=explode('.', PHPWG_VERSION);
+  if (file_exists($pwgversion.'pattern.php'))
+  {
+    include($pwgversion.'.pattern.php');
+    return true;
+  }
+  elseif (file_exists(PHPWG_ROOT_PATH.'themes/Pure_default/'.$pwgversion_array[0].$pwgversion_array[1].'x.pattern.php'))
+  {
+    include(PHPWG_ROOT_PATH.'themes/Pure_default/'.$pwgversion_array[0].$pwgversion_array[1].'x.pattern.php');
+    return true;
+  }
+  else
+  {
+    $list_pattern_path=array();
+    $dir=PHPWG_ROOT_PATH.'themes/Pure_default';
+    $dh = opendir($dir);
+    while (($file = readdir ($dh)) !== false ) {
+      if ($file !== '.' && $file !== '..') {
+        $path =$dir.'/'.$file;
+        if (!is_dir ($path)) { 
+          if(strpos($file,'pattern.php')!==false) { //On ne prend que les .pattern.php
+            $list_pattern_path[]=$file;
+          }
+        }
+      }
+    }
+    closedir($dh);
+    $f=0;
+    for($i = 10; $i >=0; $i--)
+    {
+      if (in_array($pwgversion_array[0].$i.'.pattern.php',$list_pattern_path))
+      {
+        include($pwgversion_array[0].$i.'.pattern.php');
+        return true;
+        $f=1;
+        break;
+      }
+    }
+    if ($f=0)
+    {
+      return false;
+    }
+  }
+  
+}
+if(!load_pattern())
+{
+  global $page;
+  $page['errors'][]='Theme not compatible';
+}
+
+
+
 add_event_handler('loc_after_page_header', 'Pure_default_after_page_header');
 function Pure_default_after_page_header()
 {
@@ -52,168 +127,122 @@ function Pure_default_after_page_header()
 add_event_handler('loc_end_index', 'Pure_default_index');
 function Pure_default_index()
 {
-    global $template;
-    $template->set_prefilter('index', 'Pure_default_prefilter_index');
+  global $template;
+  $template->set_prefilter('index', 'Pure_default_prefilter_index');
 }
 function Pure_default_prefilter_index($content, &$smarty)
 {
-  $search = '#<div id="content" class="content">#';  
-  $replacement = '<div id="content" class="content">
-  <table id="table_content" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td id="section_up_left">&nbsp;</td>
-      <td id="section_up">&nbsp;</td>
-      <td id="section_up_right">&nbsp;</td>
-    </tr>
-    <tr>
-      <td id="section_left">&nbsp;</td>
-      <td id="section_in">
-';
-  $content = preg_replace($search, $replacement, $content);
-	
-  $search = '#\{if \!empty\(\$PLUGIN_INDEX_CONTENT_END\)\}\{\$PLUGIN_INDEX_CONTENT_END\}\{/if\}#';  
-  $replacement = '{if !empty($PLUGIN_INDEX_CONTENT_END)}{$PLUGIN_INDEX_CONTENT_END}{/if}
-      </td>
-	  <td id="section_right">&nbsp;</td>
-    </tr>
-    <tr>
-      <td id="section_bottom_left">&nbsp;</td>
-      <td id="section_bottom" >&nbsp;</td>
-      <td id="section_bottom_right" >&nbsp;</td>
-    </tr>
-  </table>
-';
-  return preg_replace($search, $replacement, $content);
+  global $pattern;
+  $r=$pattern['Pure_default_prefilter_index']['R'];
+  $ps=$pattern['Pure_default_prefilter_index']['S'];
+  foreach($r as $i => $pr)
+  {
+    $content = preg_replace($ps[$i], $pr, $content);
+  }
+  return $content;
 }
+
 /************************************ picture.tpl ************************************/
 add_event_handler('loc_begin_picture', 'Pure_default_picture');
 function Pure_default_picture()
 {
-    global $template;
-    $template->set_prefilter('picture', 'Pure_default_prefilter_picture');
+  global $template;
+  $template->set_prefilter('picture', 'Pure_default_prefilter_picture');
 }
 function Pure_default_prefilter_picture($content, &$smarty)
 {
-  $search = '#<div id="content" class="pictureContent">#';  
-  $replacement = '<div id="content" class="pictureContent">
-  <table id="table_content" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td id="section_up_left">&nbsp;</td>
-      <td id="section_up">&nbsp;</td>
-      <td id="section_up_right">&nbsp;</td>
-    </tr>
-    <tr>
-      <td id="section_left">&nbsp;</td>
-      <td id="section_in">
-';
-  $content = preg_replace($search, $replacement, $content);
-	
-  $search = '#\{if \!empty\(\$PLUGIN_PICTURE_AFTER\)\}\{\$PLUGIN_PICTURE_AFTER\}\{/if\}#';  
-  $replacement = '{if !empty($PLUGIN_PICTURE_AFTER)}{$PLUGIN_PICTURE_AFTER}{/if}
-      </td>
-	  <td id="section_right">&nbsp;</td>
-    </tr>
-    <tr>
-      <td id="section_bottom_left">&nbsp;</td>
-      <td id="section_bottom" >&nbsp;</td>
-      <td id="section_bottom_right" >&nbsp;</td>
-    </tr>
-  </table>
-';
-  return preg_replace($search, $replacement, $content);
+  global $pattern;
+  $r=$pattern['Pure_default_prefilter_picture']['R'];
+  $ps=$pattern['Pure_default_prefilter_picture']['S'];
+  foreach($r as $i => $pr)
+  {
+    $content = preg_replace($ps[$i], $pr, $content);
+  }
+  return $content;
 }
-
 /**************************** identification.tpl *****************************************************************/
 function Pure_default_prefilter_identification($content, &$smarty)
 {
-  $search = '#<form action="\{\$F_LOGIN_ACTION\}" method="post" name="login_form" class="properties">#';  
-  $replacement = '<div id="autre_content">
-<form action="{$F_LOGIN_ACTION}" method="post" name="login_form" class="properties">
-';
-  $content = preg_replace($search, $replacement, $content);
-  $search = '#</div>[\s]*<\!-- content -->#';  
-  $replacement = '</div>
-	</div> <!-- content -->';
-  return preg_replace($search, $replacement, $content);
+  global $pattern;
+  $r=$pattern['Pure_default_prefilter_identification']['R'];
+  $ps=$pattern['Pure_default_prefilter_identification']['S'];
+  foreach($r as $i => $pr)
+  {
+    $content = preg_replace($ps[$i], $pr, $content);
+  }
+  return $content;
 }
 /**************************** nbm.tpl *****************************************************************/
 function Pure_default_prefilter_nbm($content, &$smarty)
 {
-	$search = '#\{if not empty(\$errors)\}#';  
-	$replacement = '<div id="autre_content">
-{if not empty($errors)}
-';
-	$content = preg_replace($search, $replacement, $content);
-	$search = '#\{/if\}[\s]*</div>#';  
-	$replacement = '{/if}
-	</div>
-	</div> <!-- content -->';
-	return preg_replace($search, $replacement, $content);
+  global $pattern;
+  $r=$pattern['Pure_default_prefilter_nbm']['R'];
+  $ps=$pattern['Pure_default_prefilter_nbm']['S'];
+  foreach($r as $i => $pr)
+  {
+    $content = preg_replace($ps[$i], $pr, $content);
+  }
+  return $content;
 }
 /**************************** notification.tpl *****************************************************************/
 function Pure_default_prefilter_notification($content, &$smarty)
 {
-	$search = '#<p>\{\'#';  
-	$replacement = '<div id="autre_content">
-<p>{\'';
-	$content = preg_replace($search, $replacement, $content);
-	$search = '#</dt>[\s]*</dl>#';  
-	$replacement = '</dt>
-	</dl>
-</div>';
-	return preg_replace($search, $replacement, $content);
+  global $pattern;
+  $r=$pattern['Pure_default_prefilter_notification']['R'];
+  $ps=$pattern['Pure_default_prefilter_notification']['S'];
+  foreach($r as $i => $pr)
+  {
+    $content = preg_replace($ps[$i], $pr, $content);
+  }
+  return $content;
 }
 /**************************** password.tpl *****************************************************************/
 function Pure_default_prefilter_password($content, &$smarty)
 {
-	$search = '#<form action=#';  
-	$replacement = '<div id="autre_content">
-<form action=';
-	$content = preg_replace($search, $replacement, $content);
-	$search = '#</div>[\s]*<!-- content -->#';  
-	$replacement = '</div>
-	</div> <!-- content -->';
-	return preg_replace($search, $replacement, $content);
+  global $pattern;
+  $r=$pattern['Pure_default_prefilter_password']['R'];
+  $ps=$pattern['Pure_default_prefilter_password']['S'];
+  foreach($r as $i => $pr)
+  {
+    $content = preg_replace($ps[$i], $pr, $content);
+  }
+  return $content;
 }
 /**************************** tags.tpl *****************************************************************/
 function Pure_default_prefilter_tags($content, &$smarty)
 {
-		$search = '#</h2>[\s]*</div>#';  
-		$replacement = '</h2>
-  </div>
-<div id="autre_content">';
-		$content = preg_replace($search, $replacement, $content);
-		$search = '#</div>[\s]*<!-- content -->#';  
-		$replacement = '</div>
-		</div> <!-- content -->';
-		return preg_replace($search, $replacement, $content);
+  global $pattern;
+  $r=$pattern['Pure_default_prefilter_tags']['R'];
+  $ps=$pattern['Pure_default_prefilter_tags']['S'];
+  foreach($r as $i => $pr)
+  {
+    $content = preg_replace($ps[$i], $pr, $content);
+  }
+  return $content;
 }
 /**************************** about.tpl *****************************************************************/
 function Pure_default_prefilter_about($content, &$smarty)
 {
-		$search = '#</h2>[\s]*</div>#';  
-		$replacement = '</h2>
-  </div>
-<div id="autre_content">';
-		$content = preg_replace($search, $replacement, $content);
-		$search = '#\{/if\}[\s]*</div>#';  
-		$replacement = '{/if}
-  </div>
-  </div>';
-		return preg_replace($search, $replacement, $content);
+  global $pattern;
+  $r=$pattern['Pure_default_prefilter_about']['R'];
+  $ps=$pattern['Pure_default_prefilter_about']['S'];
+  foreach($r as $i => $pr)
+  {
+    $content = preg_replace($ps[$i], $pr, $content);
+  }
+  return $content;
 }
 /**************************** popuphelp.tpl *****************************************************************/
 function Pure_default_prefilter_popuphelp($content, &$smarty)
 {
-		$search = '#</h2>[\s]*</div>#';  
-		$replacement = '</h2>
-  </div>
-<div id="autre_content">';
-		$content = preg_replace($search, $replacement, $content);
-		$search = '#</div>[\s]*<!-- content -->#';  
-		$replacement = '</div>
-		</div> <!-- content -->';
-		return preg_replace($search, $replacement, $content);
+  global $pattern;
+  $r=$pattern['Pure_default_prefilter_popuphelp']['R'];
+  $ps=$pattern['Pure_default_prefilter_popuphelp']['S'];
+  foreach($r as $i => $pr)
+  {
+    $content = preg_replace($ps[$i], $pr, $content);
+  }
+  return $content;
 }
 
 ?>
