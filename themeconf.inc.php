@@ -17,12 +17,12 @@ $themeconf = array(
 );
 
 
-add_event_handler('loc_begin_header', 'pwg_v');
+add_event_handler('loc_begin_page_header', 'pwg_v');
 function  pwg_v() {
   global $template;
   $pwgversion=str_replace('.','',PHPWG_VERSION);
   $pwgversion_array=explode('.', PHPWG_VERSION);
- $template->assign(
+  $template->assign(
   array(
     'PHPWG_VERSION_01' => $pwgversion_array[0].$pwgversion_array[1],
   ));
