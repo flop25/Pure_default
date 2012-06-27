@@ -29,4 +29,3 @@ jQuery(window).load(function() {
 </style>
 {/literal}{/html_head}
 {/if}
-{$PHPWG_VERSION_01}
