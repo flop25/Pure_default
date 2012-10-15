@@ -1,4 +1,4 @@
-<div class="content stuffs_block">
+<div class="content stuffs_block contentWithMenu">
   <table id="table_content" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td id="section_up_left">&nbsp;</td>
