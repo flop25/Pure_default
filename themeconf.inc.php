@@ -14,6 +14,7 @@ $themeconf = array(
   'mime_icon_dir' => 'themes/Pure_default/icon/mimetypes/',
   'local_head'    => 'local_head.tpl',
   'activable' => false,
+  'colorscheme' => 'clear',
 );
 
 
