@@ -49,10 +49,10 @@ margin:0;
 }
 /*-*/
 
-#derivativeSwitchBox A, #sortOrderBox A {
+.switchBox A {
 	color: #000;
 }
-#derivativeSwitchBox, #sortOrderBox {
+.switchBox {
 	font-size: 11px;
 	color: #000;
 	text-shadow: 0 0 2px #ccc;
@@ -68,7 +68,8 @@ margin:0;
 	-webkit-box-shadow: 0 0 5px #555;
 	-moz-box-shadow: 0 0 5px #555;
 }
-#derivativeSwitchBox A:hover, #sortOrderBox A:hover {
+.switchBox A:hover {
+        color: #000;
 	text-shadow: 0 0 1px #000;
 }
 
