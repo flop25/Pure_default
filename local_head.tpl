@@ -1,4 +1,4 @@
-{if isset($PHPWG_VERSION_01) and $PHPWG_VERSION_01!="24"}
+{if isset($PHPWG_VERSION_01) and $PHPWG_VERSION_01 eq "23"}
 {footer_script require='jquery'}
 {literal} 
 var max_dim_width = 0;
