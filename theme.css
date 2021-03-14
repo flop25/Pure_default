@@ -25,7 +25,7 @@ margin-bottom:5px!important;
 	margin-right:10%;
 }
 .thumbnails SPAN, .thumbnails .wrap2 A, .thumbnails LABEL, .thumbnailCategory DIV.illustration {
-    width: auto;
+    width: auto!important;
 }
 .description  {
     padding-left: 10px;

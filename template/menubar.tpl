@@ -2,7 +2,7 @@
 <div id="menubar">
 	{foreach from=$blocks key=id item=block}
 	{if ( not empty($block->template) or not empty($block->raw_content) )}
-  <table {if ($id=='mbMenu' or $id=='mbSpecials' or $id=='mbCategories' or $id=='mbIdentification' or $id=='mbLinks' or $id=='mbTags') }id="table_{$id}"{else}class="table_menu"{/if}" cellspacing="0" cellpadding="0">
+  <table {if ($id=='mbMenu' or $id=='mbSpecials' or $id=='mbCategories' or $id=='mbIdentification' or $id=='mbLinks' or $id=='mbTags') }id="table_{$id}"{else}class="table_menu"{/if} cellspacing="0" cellpadding="0">
     <tr>
       <td class="blocmenu_up_left">&nbsp;</td>
       <td class="blocmenu_up">&nbsp;</td>
