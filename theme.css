@@ -24,7 +24,7 @@ margin-bottom:5px!important;
 	margin-left:10%;
 	margin-right:10%;
 }
-.thumbnails SPAN, .thumbnails .wrap2 A, .thumbnails LABEL, .thumbnailCategory DIV.illustration {
+.thumbnails .wrap2 A, .thumbnails LABEL, .thumbnailCategory DIV.illustration {
     width: auto!important;
 }
 .description  {
