@@ -131,7 +131,7 @@ function Pure_default_index()
   global $template;
   $template->set_prefilter('index', 'Pure_default_prefilter_index');
 }
-function Pure_default_prefilter_index($content, &$smarty)
+function Pure_default_prefilter_index($content)
 {
   global $pattern;
   $r=$pattern['Pure_default_prefilter_index']['R'];
