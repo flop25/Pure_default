@@ -131,7 +131,7 @@ function Pure_default_index()
   global $template;
   $template->set_prefilter('index', 'Pure_default_prefilter_index');
 }
-function Pure_default_prefilter_index($content, &$smarty)
+function Pure_default_prefilter_index($content)
 {
   global $pattern;
   $r=$pattern['Pure_default_prefilter_index']['R'];
@@ -150,7 +150,7 @@ function Pure_default_picture()
   global $template;
   $template->set_prefilter('picture', 'Pure_default_prefilter_picture');
 }
-function Pure_default_prefilter_picture($content, &$smarty)
+function Pure_default_prefilter_picture($content)
 {
   global $pattern;
   $r=$pattern['Pure_default_prefilter_picture']['R'];
@@ -162,7 +162,7 @@ function Pure_default_prefilter_picture($content, &$smarty)
   return $content;
 }
 /**************************** identification.tpl *****************************************************************/
-function Pure_default_prefilter_identification($content, &$smarty)
+function Pure_default_prefilter_identification($content)
 {
   global $pattern;
   $r=$pattern['Pure_default_prefilter_identification']['R'];
@@ -174,7 +174,7 @@ function Pure_default_prefilter_identification($content, &$smarty)
   return $content;
 }
 /**************************** nbm.tpl *****************************************************************/
-function Pure_default_prefilter_nbm($content, &$smarty)
+function Pure_default_prefilter_nbm($content)
 {
   global $pattern;
   $r=$pattern['Pure_default_prefilter_nbm']['R'];
@@ -186,7 +186,7 @@ function Pure_default_prefilter_nbm($content, &$smarty)
   return $content;
 }
 /**************************** notification.tpl *****************************************************************/
-function Pure_default_prefilter_notification($content, &$smarty)
+function Pure_default_prefilter_notification($content)
 {
   global $pattern;
   $r=$pattern['Pure_default_prefilter_notification']['R'];
@@ -198,7 +198,7 @@ function Pure_default_prefilter_notification($content, &$smarty)
   return $content;
 }
 /**************************** password.tpl *****************************************************************/
-function Pure_default_prefilter_password($content, &$smarty)
+function Pure_default_prefilter_password($content)
 {
   global $pattern;
   $r=$pattern['Pure_default_prefilter_password']['R'];
@@ -210,7 +210,7 @@ function Pure_default_prefilter_password($content, &$smarty)
   return $content;
 }
 /**************************** tags.tpl *****************************************************************/
-function Pure_default_prefilter_tags($content, &$smarty)
+function Pure_default_prefilter_tags($content)
 {
   global $pattern;
   $r=$pattern['Pure_default_prefilter_tags']['R'];
@@ -222,7 +222,7 @@ function Pure_default_prefilter_tags($content, &$smarty)
   return $content;
 }
 /**************************** about.tpl *****************************************************************/
-function Pure_default_prefilter_about($content, &$smarty)
+function Pure_default_prefilter_about($content)
 {
   global $pattern;
   $r=$pattern['Pure_default_prefilter_about']['R'];
@@ -234,7 +234,7 @@ function Pure_default_prefilter_about($content, &$smarty)
   return $content;
 }
 /**************************** popuphelp.tpl *****************************************************************/
-function Pure_default_prefilter_popuphelp($content, &$smarty)
+function Pure_default_prefilter_popuphelp($content)
 {
   global $pattern;
   $r=$pattern['Pure_default_prefilter_popuphelp']['R'];
