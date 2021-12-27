@@ -1,4 +1,5 @@
 <?php
+$pattern['return']=true;
 $pattern['Pure_default_prefilter_index']['S']['table_content_begin']='#<div id="content" class="content\{if isset\(\$MENUBAR\)\} contentWithMenu\{/if\}">#';
 $pattern['Pure_default_prefilter_index']['R']['table_content_begin']='<div id="content" class="content{if isset($MENUBAR)} contentWithMenu{/if}">
   <table id="table_content" border="0" cellspacing="0" cellpadding="0">
@@ -24,8 +25,8 @@ $pattern['Pure_default_prefilter_index']['R']['table_content_end']='{if !empty($
   </table>
 ';
 
-$pattern['Pure_default_prefilter_picture']['S']['table_content_begin']='#<div id="content" \{if isset\(\$MENUBAR\)\}class="contentWithMenu"\{/if\}>#';
-$pattern['Pure_default_prefilter_picture']['R']['table_content_begin']='<div id="content" {if isset($MENUBAR)}class="contentWithMenu"{/if}>
+$pattern['Pure_default_prefilter_picture']['S']['table_content_begin']='#<div id="content"\{if isset\(\$MENUBAR\)\} class="contentWithMenu"\{/if\}>#';
+$pattern['Pure_default_prefilter_picture']['R']['table_content_begin']='<div id="content" {if isset($MENUBAR)} class="contentWithMenu"{/if}>
   <table id="table_content" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td id="section_up_left">&nbsp;</td>
@@ -104,5 +105,4 @@ $pattern['Pure_default_prefilter_popuphelp']['R']['autre_content_begin']= '</h2>
 $pattern['Pure_default_prefilter_popuphelp']['S']['autre_content_end']='#</div>[\s]*<!-- content -->#';  
 $pattern['Pure_default_prefilter_popuphelp']['R']['autre_content_end']='</div>
 	</div> <!-- content -->';
-
 ?>
