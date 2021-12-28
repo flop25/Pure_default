@@ -67,7 +67,7 @@ function load_pattern()
     closedir($dh);
     natsort($list_pattern_path);
     $list_pattern_path=array_reverse($list_pattern_path);
-    echo($list_pattern_path[0]);
+    
     include($list_pattern_path[0]);
     return $pattern['return'];
  }
